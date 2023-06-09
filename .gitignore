@@ -35,3 +35,4 @@ build/
 ### ignore ###
 
 beforStart
+import.sql
