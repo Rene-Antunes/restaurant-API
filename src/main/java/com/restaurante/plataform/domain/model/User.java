@@ -1,7 +1,9 @@
 package com.restaurante.plataform.domain.model;
 
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -10,8 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -38,6 +40,10 @@ public class User {
 	@CreationTimestamp
 	@Column(nullable = false, columnDefinition = "datetime")
 	private OffsetDateTime dateRegister;
+	
+	@OneToMany
+	@JoinColumn(name = "server_tables_id" , nullable = false)
+	private List<Tables> responsibleForTables = new ArrayList<>();
 	
 	@ManyToMany
 	private Set<GroupType> category = new HashSet<>();

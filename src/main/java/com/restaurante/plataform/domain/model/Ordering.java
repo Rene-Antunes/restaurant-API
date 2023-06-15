@@ -44,8 +44,8 @@ public class Ordering {
 	 private PayType payType;
 
 	 @ManyToOne
-	 @JoinColumn(name = "user_client_id", nullable = false)
-	 private User client;
+	 @JoinColumn(name = "table_order_id", nullable = false)
+	 private Tables tables;
 
 	 @OneToMany(mappedBy = "ordering") 	
 	 private List<OrderingItem> itens = new ArrayList<>();
