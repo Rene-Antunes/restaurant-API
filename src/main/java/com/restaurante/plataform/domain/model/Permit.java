@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Data
 @EqualsAndHashCode
-public class Permition {
+public class Permit {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

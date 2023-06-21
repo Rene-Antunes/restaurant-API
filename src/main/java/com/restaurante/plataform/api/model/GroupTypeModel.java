@@ -20,5 +20,5 @@ public class GroupTypeModel {
 	
 	private Long id;
 	private String name;
-	private Set<PermitionModel> permitions = new HashSet<>();
+	private Set<PermitModel> permitions = new HashSet<>();
 }

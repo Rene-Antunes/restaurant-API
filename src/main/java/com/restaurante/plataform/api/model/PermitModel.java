@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class PermitionModel {
+public class PermitModel {
 	
 	private Long id;
 	private String name;

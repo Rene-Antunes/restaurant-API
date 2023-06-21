@@ -1,19 +1,18 @@
 package com.restaurante.plataform.domain.service;
 
-import java.security.Permission;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.restaurante.plataform.domain.repository.PermitionRepository;
+import com.restaurante.plataform.domain.model.Permit;
+import com.restaurante.plataform.domain.repository.PermitRepository;
 
 @Service
-public class RegisterPermitionService {
+public class RegisterPermitService {
 	
 	@Autowired
-	private PermitionRepository permitionRepository;
+	private PermitRepository permitionRepository;
 	
-	public Permission findOrFail(Long permitionId) {
+	public Permit findOrFail(Long permitionId) {
 		return permitionRepository.findById(permitionId)
 				.orElseThrow(()-> new RuntimeException());
 	}

@@ -25,5 +25,5 @@ public class GroupType {
 	private String name;
 	
 	@ManyToMany
-	private Set<Permition> permitions = new HashSet<>();
+	private Set<Permit> permitions = new HashSet<>();
 }
