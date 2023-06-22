@@ -21,6 +21,18 @@ public class RegisterUserService {
 	}
 	
 	
+	
+	@Transactional
+	public void changePassword(Long userId, String currentPassword, String newPassword) {
+		User user =  findOrFail(userId);
+		
+		if(user.passwordNotEquals(currentPassword)) {
+			throw new IllegalArgumentException();
+		}
+	
+		user.setPassword(newPassword);
+	}
+	
 	public User findOrFail(Long userId) {
 		return userRepository.findById(userId)
 				.orElseThrow(() -> new RuntimeException());

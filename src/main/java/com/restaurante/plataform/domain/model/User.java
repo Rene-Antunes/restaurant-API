@@ -15,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.Data;
@@ -43,9 +45,20 @@ public class User {
 	
 	@OneToMany
 	@JoinColumn(name = "server_tables_id" , nullable = false)
+	@Cascade(value = CascadeType.ALL)
 	private List<Tables> responsibleForTables = new ArrayList<>();
 	
 	@ManyToMany
 	private Set<GroupType> category = new HashSet<>();
+	
+	public boolean passwordEquals(String password) {
+		return getPassword().equals(password);
+	}
+	
+	public boolean passwordNotEquals(String password) {
+		return !passwordEquals(password);
+	}
+	
+	
 	
 }
