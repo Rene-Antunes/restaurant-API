@@ -1,5 +1,7 @@
 package com.restaurante.plataform.api.model;
 
+import com.restaurante.plataform.domain.model.TableStats;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,4 +9,5 @@ import lombok.Setter;
 @Setter
 public class TablesModel {
 	private Integer number;
+	private TableStats tableStats;
 }

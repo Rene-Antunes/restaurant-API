@@ -1,6 +1,6 @@
 package com.restaurante.plataform.api.model.input;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
 import lombok.Getter;
@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 public class TablesInput {
 	
-	@NotBlank
+	@NotNull
 	@PositiveOrZero
 	private Integer number;
 }

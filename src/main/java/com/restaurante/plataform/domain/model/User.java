@@ -44,7 +44,7 @@ public class User {
 	private OffsetDateTime dateRegister;
 	
 	@OneToMany
-	@JoinColumn(name = "server_tables_id" , nullable = false)
+	@JoinColumn(name = "server_tables_id")
 	@Cascade(value = CascadeType.ALL)
 	private List<Tables> responsibleForTables = new ArrayList<>();
 	
