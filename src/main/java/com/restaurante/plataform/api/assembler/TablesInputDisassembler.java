@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.restaurante.plataform.api.model.input.TablesInput;
+import com.restaurante.plataform.api.model.input.TablesInputUpdate;
 import com.restaurante.plataform.domain.model.Tables;
 
 @Component
@@ -26,7 +27,7 @@ public class TablesInputDisassembler {
 				.collect(Collectors.toList());
 	}
 	
-	public void copyToDomainObject(TablesInput tablesInput, Tables tables){
-		modelMapper.map(tablesInput, tables);
+	public void copyToDomainObject(TablesInputUpdate tablesInputUpdate, Tables tables){
+		modelMapper.map(tablesInputUpdate, tables);
 	}
 }

@@ -10,13 +10,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class TablesInput {
+public class TablesInputUpdate {
 	
-	@NotNull
-	@PositiveOrZero
-	private Integer number;
 	@NotNull
 	private TableStats tableStats = TableStats.AVAILABLE;
-	
 	
 }

@@ -67,7 +67,7 @@ public class UserController {
 			@RequestBody @Valid UserInput userInput) {
 		User CurrentUser = registerUserService.findOrFail(userId);
 		userInputDisassembler.copyToDomainObject(userInput, CurrentUser);
-		CurrentUser = registerUserService.save(CurrentUser);
+		registerUserService.save(CurrentUser);
 
 		return userModelAssembler.toModel(CurrentUser);
 	}

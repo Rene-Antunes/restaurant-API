@@ -26,7 +26,7 @@ public class Tables {
 	private Integer number;
 	
 	@Enumerated(EnumType.STRING)
-	private TableStats tableStats = TableStats.ACTIVE;
+	private TableStats tableStats;
 	
 	
 		

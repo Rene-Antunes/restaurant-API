@@ -1,9 +1,10 @@
 package com.restaurante.plataform.domain.model;
 
 public enum TableStats {
-	ACTIVE,
-	NO_ACTIVE,
+	
+	AVAILABLE,
+	NOT_AVAILABLE,
 	ATTEND,
-	NO_ATTEND,
+	NOT_ATTEND,
 	RECEIVED
 }
