@@ -47,6 +47,12 @@ public class TablesControllers {
 		return tablesModelAssembler.toCollectionModel(AllTables);
 	}
 	
+	@GetMapping("/{tablesId}")
+	public TablesModel search(@PathVariable Long tablesId) {
+		Tables table = registerTablesService.findOrFail(tablesId);
+		
+		return tablesModelAssembler.toModel(table);
+	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
