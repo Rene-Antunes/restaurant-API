@@ -1,7 +1,7 @@
 package com.restaurante.plataform.domain.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,5 +25,5 @@ public class GroupType {
 	private String name;
 	
 	@ManyToMany
-	private Set<Permit> permitions = new HashSet<>();
+	private List<Permit> permissions = new ArrayList<>();
 }

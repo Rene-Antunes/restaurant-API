@@ -1,5 +1,8 @@
 package com.restaurante.plataform.api.model.input;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.constraints.NotBlank;
 
 import lombok.Getter;
@@ -11,4 +14,6 @@ public class GroupTypeInput {
 	
 	@NotBlank
 	private String name;
+	private List<PermitInput> permissions = new ArrayList<>();
+	
 }
