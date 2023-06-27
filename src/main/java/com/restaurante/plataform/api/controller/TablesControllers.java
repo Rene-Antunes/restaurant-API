@@ -42,7 +42,7 @@ public class TablesControllers {
 	private TablesInputDisassembler tablesInputDisassembler;
 	
 	@GetMapping
-	public List<TablesModel> listar(){
+	public List<TablesModel> list(){
 		List<Tables> AllTables = tablesRepository.findAll();
 		return tablesModelAssembler.toCollectionModel(AllTables);
 	}
@@ -74,7 +74,7 @@ public class TablesControllers {
 	
 	@PutMapping("/{tablesId}")
 	public TablesModel toUpdate(@PathVariable Long tablesId,
-			@RequestBody @Valid TablesInputUpdate tablesInputUpdate) {
+			@RequestBody TablesInputUpdate tablesInputUpdate) {
 		
 		Tables currentTables =	registerTablesService.findOrFail(tablesId);
 		tablesInputDisassembler.copyToDomainObject(tablesInputUpdate, currentTables);

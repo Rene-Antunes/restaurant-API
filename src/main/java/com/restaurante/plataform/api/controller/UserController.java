@@ -48,7 +48,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/{userId}")
-	public UserModel find(@PathVariable Long userId) {
+	public UserModel search(@PathVariable Long userId) {
 		User user = registerUserService.findOrFail(userId);
 		return userModelAssembler.toModel(user);
 	}

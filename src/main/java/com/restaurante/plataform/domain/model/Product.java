@@ -30,4 +30,12 @@ public class Product {
 	private Boolean active;
 
 	
+	public void active() {
+		setActive(true);
+	}
+	
+	public void inactive() {
+		setActive(false);
+	}
+	
 }

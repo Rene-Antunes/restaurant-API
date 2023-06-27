@@ -23,5 +23,17 @@ public class RegisterProductService {
 		return productRepository.findById(productId)
 				.orElseThrow(() -> new RuntimeException());
 	}
+	
+	@Transactional
+	public void active(Long productId) {
+		Product currentProduct = findOrFail(productId);
+		currentProduct.active();
+	}
+	
+	@Transactional
+	public void inactive(Long productId) {
+		Product currentProduct = findOrFail(productId);
+		currentProduct.inactive();
+	}
 
 }
