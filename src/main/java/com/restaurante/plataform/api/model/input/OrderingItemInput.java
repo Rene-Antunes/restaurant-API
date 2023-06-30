@@ -11,7 +11,7 @@ import lombok.Setter;
 public class OrderingItemInput {
 	
 	@NotNull
-	private Long produtoId;
+	private Long productId;
 	@NotNull
 	@PositiveOrZero
 	private Integer quantity;

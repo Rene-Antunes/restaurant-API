@@ -18,11 +18,9 @@ import lombok.Setter;
 @Setter
 public class OrderingItemModel {
 	
-	private Long id;
+	private Long productId;
 	private Integer quantity;
 	private BigDecimal unitPrice;
 	private BigDecimal totalPrice;
 	private String observation;
-	private OrderingModel ordering;
-	private ProductModel product;
 }

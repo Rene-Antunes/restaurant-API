@@ -8,20 +8,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.restaurante.plataform.api.model.OrderingModel;
+import com.restaurante.plataform.api.model.OrderingResumeModel;
 import com.restaurante.plataform.domain.model.Ordering;
 
 @Component
-public class OrderingModelAssembler {
+public class OrderingResumeModelAssembler {
 	
 	@Autowired
 	private ModelMapper modelMapper;
 	
-	public OrderingModel toModel(Ordering order) {
-		return modelMapper.map(order, OrderingModel.class);
+	public OrderingResumeModel toModel(Ordering order) {
+		return modelMapper.map(order, OrderingResumeModel.class);
 	}
 	
 	
-	public List<OrderingModel> toCollectionModel(List<Ordering> orderins){
+	public List<OrderingResumeModel> toCollectionModel(List<Ordering> orderins){
 		return orderins.stream()
 				.map(order -> toModel(order))
 				.collect(Collectors.toList());

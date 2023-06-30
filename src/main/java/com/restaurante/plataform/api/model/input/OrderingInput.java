@@ -18,12 +18,11 @@ import lombok.Setter;
 @Setter
 public class OrderingInput {
 	 
-	@NotNull
-	@Valid
-	private PayType payType;
+//	@NotNull
+	private PayTypeInput payType;
 	
 	@NotNull
-	private Tables tables;
+	private TablesInput tables;
 	
 	@NotNull
 	@Size(min = 1)

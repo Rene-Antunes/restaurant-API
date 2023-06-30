@@ -28,7 +28,7 @@ public class OrderingItem {
 	private String observation;
 	
 	@ManyToOne
-	@JoinColumn(name = "ordering_id", nullable = false)
+	@JoinColumn(nullable = false)
 	private Ordering ordering;
 	
 	@ManyToOne

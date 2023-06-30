@@ -23,7 +23,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class OrderingModel {
+public class OrderingResumeModel {
 	
 	
 	 private Long id;
@@ -31,10 +31,6 @@ public class OrderingModel {
 	 private BigDecimal subTotal;
 	 private BigDecimal totalValue;
 	 private OffsetDateTime dateCriation;
-	 private OffsetDateTime dateConfirm;
-	 private OffsetDateTime dateCancel;
-	 private PayType payType;
 	 private TablesModel tables;
-	 private List<OrderingItemModel> itens;
 
 }

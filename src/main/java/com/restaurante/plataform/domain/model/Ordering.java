@@ -5,7 +5,10 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.Data;
@@ -28,6 +32,7 @@ public class Ordering {
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Long id;
 	 
+	 @Enumerated(EnumType.STRING)
 	 private OrderingStats orderingStats;
 	 
 	 private BigDecimal subTotal;
@@ -44,10 +49,10 @@ public class Ordering {
 	 private PayType payType;
 
 	 @ManyToOne
-	 @JoinColumn(name = "table_order_id", nullable = false)
+	 @JoinColumn(name = "table_id", nullable = false)
 	 private Tables tables;
 
-	 @OneToMany(mappedBy = "ordering") 	
+	 @OneToMany(mappedBy = "ordering",  cascade = CascadeType.ALL)
 	 private List<OrderingItem> itens = new ArrayList<>();
-
+	 
 }
