@@ -22,6 +22,7 @@ import com.restaurante.plataform.api.model.OrderingModel;
 import com.restaurante.plataform.api.model.OrderingResumeModel;
 import com.restaurante.plataform.api.model.input.OrderingInput;
 import com.restaurante.plataform.domain.model.Ordering;
+import com.restaurante.plataform.domain.model.Tables;
 import com.restaurante.plataform.domain.repository.OrderingRepository;
 import com.restaurante.plataform.domain.service.IssuenceOfOrderService;
 
@@ -56,6 +57,14 @@ public class OrderingController {
 		Ordering ordering =	issuenceOfOrderService.finOrFail(orderingId);
 		return orderingModelAssembler.toModel(ordering);
 		
+	}
+	
+	@PostMapping
+	@ResponseStatus(HttpStatus.CREATED)
+	public OrderingModel add(@Valid @RequestBody OrderingInput orderingInput) {
+			Ordering newOrdering = orderingInputDisassembler.toDomainObject(orderingInput);
+			newOrdering =  issuenceOfOrderService.issue(newOrdering);
+			return orderingModelAssembler.toModel(newOrdering);
 	}
 	
 	

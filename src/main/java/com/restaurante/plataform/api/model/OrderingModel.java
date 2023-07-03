@@ -29,6 +29,7 @@ public class OrderingModel {
 	 private Long id;
 	 private String orderingStats;
 	 private BigDecimal subTotal;
+	 private BigDecimal serverTax;
 	 private BigDecimal totalValue;
 	 private OffsetDateTime dateCriation;
 	 private OffsetDateTime dateConfirm;

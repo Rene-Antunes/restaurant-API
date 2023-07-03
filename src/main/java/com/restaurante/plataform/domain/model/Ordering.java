@@ -37,6 +37,7 @@ public class Ordering {
 	 
 	 private BigDecimal subTotal;
 	 private BigDecimal totalValue;
+	 private BigDecimal serverTax;
 	 
 	 @CreationTimestamp
 	 private OffsetDateTime dateCriation;
@@ -54,5 +55,21 @@ public class Ordering {
 
 	 @OneToMany(mappedBy = "ordering",  cascade = CascadeType.ALL)
 	 private List<OrderingItem> itens = new ArrayList<>();
+	 
+	 
+	 public void calcTotalValue() {
+		 getItens().forEach(OrderingItem::calcValuePrice);
+		 
+		 this.subTotal = getItens().stream()
+				 .map(iten -> iten.getTotalPrice())
+				 .reduce(BigDecimal.ZERO,  BigDecimal::add);
+		 
+		 BigDecimal porcent = totalValue = this.subTotal.add(this.serverTax).multiply(serverTax);
+		 
+		 this.totalValue = this.subTotal.add(porcent.divide(new BigDecimal(100)));
+		
+	 }
+	 
+	 
 	 
 }
