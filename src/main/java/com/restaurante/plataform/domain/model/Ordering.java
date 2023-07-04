@@ -33,7 +33,7 @@ public class Ordering {
 	 private Long id;
 	 
 	 @Enumerated(EnumType.STRING)
-	 private OrderingStats orderingStats;
+	 private OrderingStats Stats = OrderingStats.CREATED;
 	 
 	 private BigDecimal subTotal;
 	 private BigDecimal totalValue;
@@ -41,8 +41,9 @@ public class Ordering {
 	 
 	 @CreationTimestamp
 	 private OffsetDateTime dateCriation;
-	 
 	 private OffsetDateTime dateConfirm;
+	 private OffsetDateTime dateReadyToServe;
+	 private OffsetDateTime dateReceveid;
 	 private OffsetDateTime dateCancel;
 	 
 	 @ManyToOne
@@ -70,6 +71,35 @@ public class Ordering {
 		
 	 }
 	 
+	 public void confirme() {
+		 setStats(OrderingStats.CONFIRMED);
+		 setDateConfirm(OffsetDateTime.now());
+	 }
 	 
+	 public void ready() {
+		 setStats(OrderingStats.READY_TO_SERVE);
+		 setDateReadyToServe(OffsetDateTime.now());
+	 }
+	 
+	 public void delivered() {
+		 setStats(OrderingStats.RECEVEID);
+		 setDateReceveid(OffsetDateTime.now());
+	 }
+	 
+	 public void cancel() {
+		 setStats(OrderingStats.CANCELED);
+		 setDateCancel(OffsetDateTime.now());
+	 }
+	 
+	 
+	 
+	 private void setStats(OrderingStats newStats) {
+		 if(getStats().cantChangeTo(newStats)) {
+			throw new RuntimeException(String.format("Order %d can't change stats %s to %s ",
+						getId(), getStats().getDescription(), newStats.getDescription())); 
+		 }
+		 
+		 this.Stats = newStats;
+	 }
 	 
 }
