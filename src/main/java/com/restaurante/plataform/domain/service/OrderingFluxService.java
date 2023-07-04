@@ -16,26 +16,26 @@ public class OrderingFluxService {
 	
 	
 	@Transactional
-	public void confirme(Long orderId) {
-		Ordering order = issuenceOfOrderService.finOrFail(orderId);
+	public void confirme(String orderCode) {
+		Ordering order = issuenceOfOrderService.findOrFail(orderCode);
 		order.confirme();
 	}
 	
 	@Transactional
-	public void ready(Long orderId) {
-		Ordering order = issuenceOfOrderService.finOrFail(orderId);
+	public void ready(String orderCode) {
+		Ordering order = issuenceOfOrderService.findOrFail(orderCode);
 		order.ready();
 	}
 
 	@Transactional
-	public void delivered(Long orderId) {
-		Ordering order = issuenceOfOrderService.finOrFail(orderId);
+	public void delivered(String orderCode) {
+		Ordering order = issuenceOfOrderService.findOrFail(orderCode);
 		order.delivered();
 	}
 	
 	@Transactional
-	public void cancel(Long orderId) {
-		Ordering order = issuenceOfOrderService.finOrFail(orderId);
+	public void cancel(String orderCode) {
+		Ordering order = issuenceOfOrderService.findOrFail(orderCode);
 		order.cancel();
 	}
 	

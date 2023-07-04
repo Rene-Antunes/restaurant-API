@@ -52,9 +52,9 @@ public class OrderingController {
 	
 	}
 	
-	@GetMapping("/{orderingId}")
-	public OrderingModel search(@PathVariable Long orderingId) {
-		Ordering ordering =	issuenceOfOrderService.finOrFail(orderingId);
+	@GetMapping("/{orderCode}")
+	public OrderingModel search(@PathVariable String orderCode) {
+		Ordering ordering =	issuenceOfOrderService.findOrFail(orderCode);
 		return orderingModelAssembler.toModel(ordering);
 		
 	}

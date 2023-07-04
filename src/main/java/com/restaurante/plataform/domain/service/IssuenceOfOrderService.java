@@ -36,13 +36,6 @@ public class IssuenceOfOrderService {
 		return orderingRepository.save(ordering);
 	}
 	
-	
-	public Ordering finOrFail(Long orderingId) {
-		return orderingRepository.findById(orderingId)
-				.orElseThrow(() -> new RuntimeException());
-	}
-	
-	
 	private void orderValidate(Ordering ordering) {
 		PayType payType = registerPayTypeService.findOrFail(ordering.getPayType().getId());
 		Tables tables = registerTablesService.findOrFail(ordering.getTables().getId());
@@ -65,5 +58,10 @@ public class IssuenceOfOrderService {
 			iten.setUnitPrice(product.getPrice());
 		
 		});
+	}
+	
+	public Ordering findOrFail(String codeOrder) {
+		return orderingRepository.findByCode(codeOrder)
+				.orElseThrow(() -> new RuntimeException());
 	}
 }

@@ -26,7 +26,7 @@ import lombok.Setter;
 public class OrderingResumeModel {
 	
 	
-	 private Long id;
+	 private String code;
 	 private String orderingStats;
 	 private BigDecimal subTotal;
 	 private BigDecimal totalValue;

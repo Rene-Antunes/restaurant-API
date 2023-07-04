@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -15,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CreationTimestamp;
@@ -31,6 +33,7 @@ public class Ordering {
 	 @EqualsAndHashCode.Include
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Long id;
+	 private String code;
 	 
 	 @Enumerated(EnumType.STRING)
 	 private OrderingStats Stats = OrderingStats.CREATED;
@@ -96,10 +99,14 @@ public class Ordering {
 	 private void setStats(OrderingStats newStats) {
 		 if(getStats().cantChangeTo(newStats)) {
 			throw new RuntimeException(String.format("Order %d can't change stats %s to %s ",
-						getId(), getStats().getDescription(), newStats.getDescription())); 
+						getCode(), getStats().getDescription(), newStats.getDescription())); 
 		 }
 		 
 		 this.Stats = newStats;
 	 }
 	 
+	 @PrePersist
+	 private void generateCode() {
+		 setCode(UUID.randomUUID().toString());
+	 }
 }

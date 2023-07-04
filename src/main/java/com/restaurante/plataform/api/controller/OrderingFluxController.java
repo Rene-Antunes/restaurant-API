@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.restaurante.plataform.domain.service.OrderingFluxService;
 
 @RestController
-@RequestMapping(value = "/orders/{orderId}")
+@RequestMapping(value = "/orders/{orderCode}")
 public class OrderingFluxController {
 	
 	
@@ -21,25 +21,25 @@ public class OrderingFluxController {
 	
 	@PutMapping("/confirme")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void confirme(@PathVariable Long orderId) {
-		orderingFluxService.confirme(orderId);
+	public void confirme(@PathVariable String orderCode) {
+		orderingFluxService.confirme(orderCode);
 	}
 	
 	@PutMapping("/ready")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void ready(@PathVariable Long orderId) {
-		orderingFluxService.ready(orderId);
+	public void ready(@PathVariable String orderCode) {
+		orderingFluxService.ready(orderCode);
 	}
 	
 	@PutMapping("/delivered")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delivered(@PathVariable Long orderId) {
-		orderingFluxService.delivered(orderId);
+	public void delivered(@PathVariable String orderCode) {
+		orderingFluxService.delivered(orderCode);
 	}
 	
 	@PutMapping("/cancel")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void cancel(@PathVariable Long orderId) {
-		orderingFluxService.cancel(orderId);
+	public void cancel(@PathVariable String orderCode) {
+		orderingFluxService.cancel(orderCode);
 	}
 }
