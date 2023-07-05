@@ -1,5 +1,6 @@
 package com.restaurante.plataform.api.assembler;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,7 +21,7 @@ public class PermitModelAssembler {
 		return modelMapper.map(permition, PermitModel.class);
 	}
 	
-	public List<PermitModel> toCollectionModel(List<Permit> permitions){
+	public List<PermitModel> toCollectionModel(Collection<Permit> permitions){
 		return permitions.stream()
 				.map(permition -> toModel(permition))
 				.collect(Collectors.toList());
