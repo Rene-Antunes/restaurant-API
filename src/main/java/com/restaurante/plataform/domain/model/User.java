@@ -48,7 +48,6 @@ public class User {
 	@Cascade(value = CascadeType.ALL)
 	private List<Tables> responsibleForTables = new ArrayList<>();
 
-
 	@ManyToMany
 	private Set<GroupType> category = new HashSet<>();
 	
