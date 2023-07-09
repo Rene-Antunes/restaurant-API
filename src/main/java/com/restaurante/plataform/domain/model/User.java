@@ -47,7 +47,8 @@ public class User {
 	@JoinColumn(name = "server_tables_id")
 	@Cascade(value = CascadeType.ALL)
 	private List<Tables> responsibleForTables = new ArrayList<>();
-	
+
+
 	@ManyToMany
 	private Set<GroupType> category = new HashSet<>();
 	
