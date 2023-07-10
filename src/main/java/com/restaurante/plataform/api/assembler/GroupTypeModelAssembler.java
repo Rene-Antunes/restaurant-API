@@ -1,5 +1,6 @@
 package com.restaurante.plataform.api.assembler;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +22,7 @@ public class GroupTypeModelAssembler {
 	}
 
 	
-	public List<GroupTypeModel> toCollectionModel(List<GroupType> groups){
+	public List<GroupTypeModel> toCollectionModel(Collection<GroupType> groups){
 		return groups.stream()
 				.map(groupType -> toModel(groupType))
 				.collect(Collectors.toList());

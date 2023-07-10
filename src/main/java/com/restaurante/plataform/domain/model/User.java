@@ -59,6 +59,12 @@ public class User {
 		return !passwordEquals(password);
 	}
 	
+	public boolean addGroup(GroupType groupType) {
+		return getCategory().add(groupType);
+	}
 	
+	public boolean removeGroup(GroupType groupType) {
+		return getCategory().remove(groupType);
+	}
 	
 }
