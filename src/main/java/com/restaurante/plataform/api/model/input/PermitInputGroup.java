@@ -1,6 +1,6 @@
 package com.restaurante.plataform.api.model.input;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,9 +9,6 @@ import lombok.Setter;
 @Setter
 public class PermitInput {
 	
-	
-	@NotBlank
-	private String name;
-	@NotBlank
-	private String description;
+	@NotNull
+	private Long id;
 }
