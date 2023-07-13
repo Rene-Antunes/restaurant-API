@@ -5,6 +5,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.restaurante.plataform.domain.exception.ProductNotFoundException;
 import com.restaurante.plataform.domain.model.Product;
 import com.restaurante.plataform.domain.repository.ProductRepository;
 
@@ -19,11 +20,6 @@ public class RegisterProductService {
 		return  productRepository.save(product);
 	}
 	
-	public Product findOrFail(Long productId) {
-		return productRepository.findById(productId)
-				.orElseThrow(() -> new RuntimeException());
-	}
-	
 	@Transactional
 	public void active(Long productId) {
 		Product currentProduct = findOrFail(productId);
@@ -34,6 +30,11 @@ public class RegisterProductService {
 	public void inactive(Long productId) {
 		Product currentProduct = findOrFail(productId);
 		currentProduct.inactive();
+	}
+	
+	public Product findOrFail(Long productId) {
+		return productRepository.findById(productId)
+				.orElseThrow(() -> new ProductNotFoundException(productId));
 	}
 
 }

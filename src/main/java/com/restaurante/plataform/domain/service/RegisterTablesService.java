@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.restaurante.plataform.domain.exception.TableNotFoundException;
 import com.restaurante.plataform.domain.model.Tables;
 import com.restaurante.plataform.domain.repository.TablesRepository;
 
@@ -34,15 +35,15 @@ public class RegisterTablesService {
 		try {
 			
 			tablesRepository.deleteById(tablesId);
-		} catch (Exception e) {
-			throw new EmptyResultDataAccessException(
-					String.format("Mesa de código %d não encontrada", tablesId), 0);
+		} catch (TableNotFoundException e) {
+			throw new TableNotFoundException(
+					String.format("Mesa de código %d não encontrada", tablesId));
 		}
 	}
 	
 	public Tables findOrFail(Long tablesId) {
 		return tablesRepository.findById(tablesId)
-				.orElseThrow(() -> new RuntimeException());
+				.orElseThrow(() -> new TableNotFoundException(tablesId));
 	}
 	
 }

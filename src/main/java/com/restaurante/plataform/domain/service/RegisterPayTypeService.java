@@ -3,9 +3,10 @@ package com.restaurante.plataform.domain.service;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.restaurante.plataform.domain.exception.ExceptionBusiness;
+import com.restaurante.plataform.domain.exception.PayTypeNotFoundException;
 import com.restaurante.plataform.domain.model.PayType;
 import com.restaurante.plataform.domain.repository.PayTypeRepository;
 
@@ -27,14 +28,14 @@ public class RegisterPayTypeService {
 		try {
 			
 			payTypeRepository.deleteById(payTypeId);
-		} catch (Exception e) {
-			throw new EmptyResultDataAccessException("Forma de pagamento não encontrada", 0);
+		} catch (PayTypeNotFoundException e) {
+			throw new PayTypeNotFoundException("Forma de pagamento não encontrada");
 		}
 	}
 	
 	
 	public PayType findOrFail(Long payTypeId) {
 		return payTypeRepository.findById(payTypeId)
-				.orElseThrow(() -> new RuntimeException());
+				.orElseThrow(() -> new ExceptionBusiness("Forma de pagamento não encontrada"));
 	}
 }	

@@ -5,6 +5,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.restaurante.plataform.domain.exception.GroupTypeNotFoundException;
 import com.restaurante.plataform.domain.model.GroupType;
 import com.restaurante.plataform.domain.model.Permit;
 import com.restaurante.plataform.domain.repository.GroupTypeRepository;
@@ -30,8 +31,8 @@ public class RegisterGroupTypeServcice {
 		try {
 			groupTypeRepository.deleteById(groupTypeId);
 			groupTypeRepository.flush();
-		} catch (Exception e) {
-			throw new RuntimeException();
+		} catch (GroupTypeNotFoundException e) {
+			throw new GroupTypeNotFoundException(e.getMessage());
 		}
 	
 	}
@@ -55,6 +56,6 @@ public class RegisterGroupTypeServcice {
 	
 	public GroupType findOrFail(Long groupTypeId) {
 		return groupTypeRepository.findById(groupTypeId)
-				.orElseThrow(() -> new RuntimeException());
+				.orElseThrow(() -> new GroupTypeNotFoundException(groupTypeId));
 	}
 }

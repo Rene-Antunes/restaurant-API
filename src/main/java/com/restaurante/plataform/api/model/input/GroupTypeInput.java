@@ -14,6 +14,6 @@ public class GroupTypeInput {
 	
 	@NotBlank
 	private String name;
-	private List<PermitInput> permissions = new ArrayList<>();
+	private List<PermitInputGroup> permissions = new ArrayList<>();
 	
 }

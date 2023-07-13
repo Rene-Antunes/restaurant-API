@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class PermitInput {
+public class PermitInputGroup {
 	
 	@NotNull
 	private Long id;

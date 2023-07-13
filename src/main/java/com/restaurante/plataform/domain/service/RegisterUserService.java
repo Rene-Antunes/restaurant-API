@@ -5,6 +5,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.restaurante.plataform.domain.exception.UserNotFoundException;
 import com.restaurante.plataform.domain.model.GroupType;
 import com.restaurante.plataform.domain.model.User;
 import com.restaurante.plataform.domain.repository.UserRepository;
@@ -58,6 +59,6 @@ public class RegisterUserService {
 	
 	public User findOrFail(Long userId) {
 		return userRepository.findById(userId)
-				.orElseThrow(() -> new RuntimeException());
+				.orElseThrow(() -> new UserNotFoundException(userId));
 	}
 }

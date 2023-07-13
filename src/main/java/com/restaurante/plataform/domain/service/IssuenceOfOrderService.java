@@ -5,6 +5,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.restaurante.plataform.domain.exception.EntityNotFoundException;
 import com.restaurante.plataform.domain.model.Ordering;
 import com.restaurante.plataform.domain.model.PayType;
 import com.restaurante.plataform.domain.model.Product;
@@ -24,8 +25,8 @@ public class IssuenceOfOrderService {
 	
 	@Autowired
 	private RegisterProductService registerProductService;
-
 	
+
 	@Transactional
 	public Ordering issue(Ordering ordering) {
 		orderValidate(ordering);
@@ -37,15 +38,13 @@ public class IssuenceOfOrderService {
 	}
 	
 	private void orderValidate(Ordering ordering) {
+		
 		PayType payType = registerPayTypeService.findOrFail(ordering.getPayType().getId());
 		Tables tables = registerTablesService.findOrFail(ordering.getTables().getId());
 		
 		ordering.setPayType(payType);
 		ordering.setTables(tables);
 		
-		if(payType.getId() == null) {
-			throw new RuntimeException("Forma de pagamento não deve ser nula.") ;
-		}
 	}
 	
 	
@@ -62,6 +61,6 @@ public class IssuenceOfOrderService {
 	
 	public Ordering findOrFail(String codeOrder) {
 		return orderingRepository.findByCode(codeOrder)
-				.orElseThrow(() -> new RuntimeException());
+				.orElseThrow(() -> new EntityNotFoundException(String.format("Pedido de código: %s não foi encontrado", codeOrder)));
 	}
 }
