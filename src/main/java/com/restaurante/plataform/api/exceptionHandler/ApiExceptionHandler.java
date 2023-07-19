@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import com.restaurante.plataform.domain.exception.EntityNotFoundException;
 import com.restaurante.plataform.domain.exception.ExceptionBusiness;
+import com.restaurante.plataform.domain.exception.UseEntityException;
 
 @ControllerAdvice
 public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
@@ -51,9 +52,27 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 				.userMessage(GENRIC_MSG_FINAL_USER)
 				.build();
 		
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-				.body(problem);
+		return handleExceptionInternal(ex, problem,new HttpHeaders(),
+				status, request);
 	}
+	
+	@ExceptionHandler(UseEntityException.class)
+	public ResponseEntity<?> treatUseEntityException(UseEntityException ex,
+			WebRequest request){
+		
+		HttpStatus status = HttpStatus.CONFLICT;
+		ProblemType problemType = ProblemType.USE_ENTITY;
+		String detail = ex.getMessage();
+		
+		Problem problem = createProblemBuilder(status, problemType, detail)
+				.userMessage(GENRIC_MSG_FINAL_USER)
+				.build();
+		
+		return handleExceptionInternal(ex, problem,new HttpHeaders(),
+				status, request);
+	}
+	
+	
 	
 	
 	@Override

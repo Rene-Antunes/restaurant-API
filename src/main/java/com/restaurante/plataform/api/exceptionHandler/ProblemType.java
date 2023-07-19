@@ -13,6 +13,7 @@ public enum ProblemType {
 	
 	BUSINESS_ERR("erro-negocio", "Violação regra de negócio");
 	
+	
 	private String title;
 	private String uri;
 	
