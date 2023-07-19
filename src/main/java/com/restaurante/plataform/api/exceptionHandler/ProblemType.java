@@ -13,6 +13,8 @@ public enum ProblemType {
 	
 	MEDIA_NOT_SUPORTED(" media-nao-suportada", "Tipo de media não suportada"),
 	
+	METHOD_NOT_SUPORTED(" metodo-nao-suportado", "Método não está correto, corriga para progesseguir "),
+	
 	BUSINESS_ERR(" erro-negocio", "Violação regra de negócio");
 	
 	
