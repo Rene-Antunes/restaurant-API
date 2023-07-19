@@ -5,13 +5,15 @@ import lombok.Getter;
 @Getter
 public enum ProblemType {
 
-	MESSAGE_INCOMPREHENSIBLE("/mensagem-incompreensível", "Mensagem incompreensível"),
+	MESSAGE_INCOMPREHENSIBLE(" /mensagem-incompreensível", "Mensagem incompreensível"),
 	
-	RESOURCE_NOT_FOUND("/recurso-nao-encontrado", "Recurso não encontrado"),
+	RESOURCE_NOT_FOUND(" /recurso-nao-encontrado", "Recurso não encontrado"),
 	
-	USE_ENTITY("entidade-em-uso", "Entidade em uso"),
+	USE_ENTITY(" entidade-em-uso", "Entidade em uso"),
 	
-	BUSINESS_ERR("erro-negocio", "Violação regra de negócio");
+	MEDIA_NOT_SUPORTED(" media-nao-suportada", "Tipo de media não suportada"),
+	
+	BUSINESS_ERR(" erro-negocio", "Violação regra de negócio");
 	
 	
 	private String title;

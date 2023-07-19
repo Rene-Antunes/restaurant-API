@@ -5,6 +5,8 @@ import java.time.OffsetDateTime;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.HttpMediaTypeNotAcceptableException;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
@@ -22,6 +24,21 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 	        + "com o administrador do sistema.";
 
 
+	@Override
+	protected ResponseEntity<Object> handleHttpMediaTypeNotSupported(HttpMediaTypeNotSupportedException ex,
+			HttpHeaders headers, HttpStatus status, WebRequest request) {
+		
+		ProblemType problemType = ProblemType.MEDIA_NOT_SUPORTED;
+		
+		String detail = String.format("O tipo de media %s não é suportado", ex.getContentType());
+		Problem problem = createProblemBuilder(status, problemType, detail)
+				.userMessage(GENRIC_MSG_FINAL_USER)
+				.build();
+		
+		
+		return handleExceptionInternal(ex, problem, headers, status, request);
+	}
+	
 	@ExceptionHandler(EntityNotFoundException.class)
 	public ResponseEntity<?> treatEntityNotFoundException(
 			EntityNotFoundException ex, WebRequest request){
