@@ -72,13 +72,13 @@ public class TablesControllers {
 		return tablesModelAssembler.toCollectionModel(newtables);
 	}
 	
-	@PutMapping("/{tablesId}")
-	public TablesModel toUpdate(@PathVariable Long tablesId,
-			@RequestBody TablesInputUpdate tablesInputUpdate) {
+	@PutMapping("/{tableId}")
+	public TablesModel toUpdate(@PathVariable Long tableId,
+			@RequestBody @Valid TablesInputUpdate tablesInputUpdate) {
 		
-		Tables currentTables =	registerTablesService.findOrFail(tablesId);
+		Tables currentTables =	registerTablesService.findOrFail(tableId);
 		tablesInputDisassembler.copyToDomainObject(tablesInputUpdate, currentTables);
-		currentTables = registerTablesService.save(currentTables);
+		registerTablesService.save(currentTables);
 		
 		return tablesModelAssembler.toModel(currentTables);
 	}

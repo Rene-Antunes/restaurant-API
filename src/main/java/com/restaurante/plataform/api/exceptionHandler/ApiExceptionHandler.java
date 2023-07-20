@@ -1,11 +1,17 @@
 package com.restaurante.plataform.api.exceptionHandler;
 
 import java.time.OffsetDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.HttpMediaTypeNotAcceptableException;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -24,7 +30,8 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 	private static final String GENRIC_MSG_FINAL_USER = "Ocorreu um erro interno inesperado no sistema. "
 	        + "Tente novamente e se o problema persistir, entre em contato "
 	        + "com o administrador do sistema.";
-
+	@Autowired
+	private MessageSource messageSource;
 
 	@Override
 	protected ResponseEntity<Object> handleHttpMediaTypeNotSupported(HttpMediaTypeNotSupportedException ex,
@@ -60,17 +67,8 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
 		
-		ProblemType problemType = ProblemType.METHOD_NOT_SUPORTED;
-		String detail = "Um ou mais campos estão inválidos. Faça o preenchimento correto e tente novamente.";
-		
-		//TODO implementar coleta dos campos que estão faltando.
-		
-		Problem problem = createProblemBuilder(status, problemType, detail)
-				.userMessage(GENRIC_MSG_FINAL_USER)
-				.build();
-
+		return handleValidationInternal(ex, ex.getBindingResult(), headers, status, request);
 				
-		return handleExceptionInternal(ex, problem, headers, status, request);
 	}
 	
 	@ExceptionHandler(EntityNotFoundException.class)
@@ -123,7 +121,37 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 				status, request);
 	}
 	
-	
+	private ResponseEntity<Object> handleValidationInternal(Exception ex, BindingResult bindingResult, HttpHeaders headers,
+			HttpStatus status, WebRequest request){
+			
+		ProblemType problemType = ProblemType.INVALID_DATA;
+		String detail = "Um ou mais campos estão inválidos. Faça o preenchimento correto e tente novamente.";
+		
+		List<Problem.Object> problemObjects = bindingResult.getAllErrors().stream()
+				.map(objectError -> {
+					String message = messageSource.getMessage(objectError, LocaleContextHolder.getLocale());
+					
+					String name = objectError.getObjectName();
+					
+					if (objectError instanceof FieldError) {
+						name = ((FieldError) objectError).getField();
+					}
+					
+					return Problem.Object.builder()
+							.name(name)
+							.userMessage(message)
+							.build();
+				})
+				.collect(Collectors.toList());
+				
+		Problem problem = createProblemBuilder(status, problemType, detail)
+				.userMessage(detail)
+				.objects(problemObjects)
+				.build();
+		
+		
+		return handleExceptionInternal(ex, problem, headers, status, request);
+	}
 	
 	
 	@Override

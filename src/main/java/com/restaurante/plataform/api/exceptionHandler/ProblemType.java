@@ -15,6 +15,8 @@ public enum ProblemType {
 	
 	METHOD_NOT_SUPORTED(" metodo-nao-suportado", "Método não está correto, corriga para progesseguir "),
 	
+	INVALID_DATA(" dados-invalidos", " dados inválidos"),
+	
 	BUSINESS_ERR(" erro-negocio", "Violação regra de negócio");
 	
 	
