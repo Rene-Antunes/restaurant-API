@@ -1,6 +1,6 @@
 <h1>✅ Status do projeto</h1>
 
-> :construction: API Rest feito em Java com Spring. restaraunt-API em construção :construction:
+> :construction: API Rest feito em Java com Spring restaraunt-API em construção :construction:
 
 <h2 id="sobre" >Descrição do Projeto </h2>
 Sistema de gerenciamento de restaurante ou lanchonete. Este sistema é uma API Rest em Java que permite o CRUD de funcionários, Produtos, fotos de produtos, mesas do estabelicimento e tipo de pagamento que pode ser aceito, permite também gerar pedidos e gerenciar seus status ex: criado, pronto, entregue. É possível gerenciar o tipo de permissão de cada funcionário para administrar o sistema. O sistema foi feito com baixo acoplamento sendo possível implementar com facilidade novas features futuramente.
@@ -56,7 +56,7 @@ git clone <https://github.com/Rene-Antunes/restaraunt-API.git>
 É necessário ter MySQL instalado em sua máquina, após instalação crie um banco de dados com nome <strong>restaurante</strong>. Pode atualizar o usuário e senha no arquivo <strong>application.properties</strong> para os dados do seu banco de dados.
 
 <h3>Iniciar aplicação</h3>
-Iniciar por meio da IDE.
+Iniciar por meio da IDE iniciando a classe RestauranteApiApplication.java.
 
 Pelo terminal:
 ```
