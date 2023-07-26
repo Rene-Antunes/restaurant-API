@@ -56,7 +56,7 @@ git clone <https://github.com/Rene-Antunes/restaraunt-API.git>
 É necessário ter MySQL instalado em sua máquina, após instalação crie um banco de dados com nome <strong>restaurante</strong>. Pode atualizar o usuário e senha no arquivo <strong>application.properties</strong> para os dados do seu banco de dados.
 
 <h3>Iniciar aplicação</h3>
-Iniciar por meio da IDE iniciando a classe RestauranteApiApplication.java.
+Iniciar por meio da IDE startando a classe <strong>RestauranteApiApplication.java</strong>.
 
 Pelo terminal:
 ```
