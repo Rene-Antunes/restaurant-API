@@ -71,3 +71,4 @@ ou utilizando o maven
 ```
 mvn spring-boot:run
 ```
+**A aplicação vai iniciar na porta http://localhost:8080**
