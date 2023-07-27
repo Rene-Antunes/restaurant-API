@@ -32,7 +32,4 @@ public class Agenda {
 	@OneToOne
 	private Tables tables;
 
-	
-	
-	
 }
