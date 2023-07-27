@@ -81,4 +81,6 @@ public class UserController {
 				, passwordinput.getNewPassword());
 	}
 	
+	
+	//TODO adicionar atualização de usuarios responsáveis e categorias
 }

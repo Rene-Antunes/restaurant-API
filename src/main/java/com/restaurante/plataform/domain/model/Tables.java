@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.restaurante.plataform.domain.exception.ExceptionBusiness;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -26,5 +28,17 @@ public class Tables {
 	@Enumerated(EnumType.STRING)
 	private TableStats tableStats;
 
-		
+	public void agending() {
+		setTablesStats(TableStats.RESERVED);
+	}
+	
+	
+	private void setTablesStats(TableStats newStats) {
+			if (getTableStats().cantChancheTo(newStats)) {
+				throw new ExceptionBusiness(String.format("Não pode mudar Status %s %s",
+						getTableStats().getDescription(), newStats.getDescription()));
+			}
+			
+		this.tableStats = newStats;
+	}
 }

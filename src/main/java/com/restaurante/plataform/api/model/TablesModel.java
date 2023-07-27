@@ -10,5 +10,4 @@ import lombok.Setter;
 public class TablesModel {
 	private Integer number;
 	private TableStats tableStats;
-	
 }
