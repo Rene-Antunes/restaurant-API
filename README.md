@@ -26,6 +26,7 @@ Tabela de conteúdos
 - [x] CRUD  de permissões
 - [x] CRUD  de formas de pagamento
 - [x] Emissão de pedidos
+- [x] Agendamento/reserva de mesas
 - [x] Associação  e desassociação de permissões a grupos
 - [x] Mudança de status de mesas ex: vaga, ocupada
 - [x] Mudança de  status de pedido ex: criado, pronto, entregue.
