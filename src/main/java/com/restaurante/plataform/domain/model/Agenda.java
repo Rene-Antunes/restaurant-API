@@ -29,8 +29,6 @@ public class Agenda {
 	private String nomeCliente;
 	private OffsetDateTime date;
 	private OffsetDateTime hour;
-//	@OneToOne
-//	private Tables tables;
 	
 	@OneToMany
 	private List<Tables> tables = new ArrayList<>();

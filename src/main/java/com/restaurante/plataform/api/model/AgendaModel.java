@@ -14,7 +14,6 @@ public class AgendaModel {
 	private String nomeCliente;
 	private OffsetDateTime date;
 	private OffsetDateTime hour;
-//	private TablesModel tables;
 	private List<TablesModel> tables;
 	
 }

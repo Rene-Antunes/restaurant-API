@@ -78,4 +78,6 @@ public class AgendaController {
 		
 		return agedAgendamentoModelAssembler.toModel(agenda);
 	}
+	
+	//TODO implementar exclusão de agendamento com mudança de status automático
 }
