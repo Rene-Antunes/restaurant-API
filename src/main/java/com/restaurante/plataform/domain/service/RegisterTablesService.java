@@ -46,6 +46,16 @@ public class RegisterTablesService {
 				.orElseThrow(() -> new TableNotFoundException(tablesId));
 	}
 	
+	public List<Tables> findOrFailList(List<Long> tablesId) {
+		try {
+			
+			return tablesRepository.findAllById(tablesId);
+		} catch (TableNotFoundException e) {
+			throw new TableNotFoundException("Mesa não pode ser encontrada");
+		}
+				
+	}
+	
 
 	
 }

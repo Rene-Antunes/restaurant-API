@@ -22,8 +22,12 @@ public class AgendaInput {
 	@NotNull
 	private OffsetDateTime hour;
 	
+//	@Valid
+//	@NotNull
+//	private TablesIdInput tables;
+	
 	@Valid
 	@NotNull
-	private TablesIdInput tables;
+	private List<TablesIdInput> tables;
 
 }

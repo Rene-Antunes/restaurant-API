@@ -1,6 +1,7 @@
 package com.restaurante.plataform.api.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -17,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.restaurante.plataform.api.assembler.AgendaModelAssembler;
 import com.restaurante.plataform.api.assembler.AgendaModelDisassembler;
 import com.restaurante.plataform.api.assembler.AgendamentoModelAssembler;
-import com.restaurante.plataform.api.assembler.TablesModelAssembler;
 import com.restaurante.plataform.api.model.AgendaModel;
 import com.restaurante.plataform.api.model.AgendamentoModel;
 import com.restaurante.plataform.api.model.input.AgendaInput;
@@ -66,13 +66,16 @@ public class AgendaController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public AgendamentoModel add(@RequestBody @Valid AgendaInput agendaInput ) {
-
 		Agenda agenda = agendaModelDisassembler.toDomainObject(agendaInput);
-		Tables tablesStatus = registerTablesService.findOrFail(agenda.getTables().getId());
-		tablesStatus.agending();
+		List<Long> tablesId = agenda.getTables().stream()
+								.map(Tables::getId)
+								.collect(Collectors.toList());
+		
+		List<Tables> tablesStatus = registerTablesService.findOrFailList(tablesId);
+		tablesStatus.forEach(table -> table.agending());
+		
 		registerAgendaService.save(agenda);
 		
 		return agedAgendamentoModelAssembler.toModel(agenda);
-		
 	}
 }
