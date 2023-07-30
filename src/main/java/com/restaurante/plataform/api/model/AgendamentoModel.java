@@ -11,7 +11,9 @@ import lombok.Setter;
 public class AgendamentoModel {
 	
 	private Long id;
-	private String nomeCliente;
+	private String nomeClient;
+	private String email;
+	private String phoneNumber;
 	private OffsetDateTime date;
 	private OffsetDateTime hour;
 }

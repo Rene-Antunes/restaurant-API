@@ -67,12 +67,11 @@ public class AgendaController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public AgendamentoModel add(@RequestBody @Valid AgendaInput agendaInput ) {
 		Agenda agenda = agendaModelDisassembler.toDomainObject(agendaInput);
-		List<Long> tablesId = agenda.getTables().stream()
-								.map(Tables::getId)
-								.collect(Collectors.toList());
-		
+		List<Long> tablesId = agenda.gettablesIds();
 		List<Tables> tablesStatus = registerTablesService.findOrFailList(tablesId);
-		tablesStatus.forEach(table -> table.agending());
+		tablesStatus.forEach(table -> table.reserve());
+		
+		//TODO implementar reserva de mesa programada para o dia marcado
 		
 		registerAgendaService.save(agenda);
 		

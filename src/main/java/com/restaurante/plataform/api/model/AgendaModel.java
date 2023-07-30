@@ -11,7 +11,9 @@ import lombok.Setter;
 public class AgendaModel {
 	
 	private Long id;
-	private String nomeCliente;
+	private String nomeClient;
+	private String email;
+	private String phoneNumber;
 	private OffsetDateTime date;
 	private OffsetDateTime hour;
 	private List<TablesModel> tables;

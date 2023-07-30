@@ -15,7 +15,11 @@ import lombok.Setter;
 public class AgendaInput {
 
 	@NotBlank
-	private String nomeCliente;
+	private String nomeClient;
+	@NotBlank
+	private String email;
+	@NotBlank
+	private String phoneNumber;
 	@NotNull
 	private OffsetDateTime date;
 	@NotNull

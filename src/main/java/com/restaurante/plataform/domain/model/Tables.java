@@ -27,8 +27,11 @@ public class Tables {
 	
 	@Enumerated(EnumType.STRING)
 	private TableStats tableStats;
-
-	public void agending() {
+	
+	
+	
+	
+	public void reserve() {
 		setTablesStats(TableStats.RESERVED);
 	}
 	
