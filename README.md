@@ -1,6 +1,6 @@
 <h1>✅ Status do projeto</h1>
 
-> :construction: API Rest feito em Java com Spring restaraunt-API em construção :construction:
+> :construction: API Rest feito em Java com Spring restaurant-API em construção :construction:
 
 <h2 id="sobre" >Descrição do Projeto </h2>
 Sistema de gerenciamento de restaurante ou lanchonete. Este sistema é uma API Rest em Java que permite o CRUD de funcionários, Produtos, fotos de produtos, mesas do estabelicimento e tipo de pagamento que pode ser aceito, permite também gerar pedidos e gerenciar seus status ex: criado, pronto, entregue. É possível gerenciar o tipo de permissão de cada funcionário para administrar o sistema. O sistema foi feito com baixo acoplamento sendo possível implementar com facilidade novas features futuramente.
