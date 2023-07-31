@@ -1,11 +1,13 @@
 package com.restaurante.plataform.domain.model;
 
+import java.time.Duration;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,15 +29,25 @@ public class Agenda {
 	private String email;
 	private String phoneNumber;
 	private OffsetDateTime date;
-	private OffsetDateTime hour;
-	
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	private List<Tables> tables = new ArrayList<>();
 	
-	public List<Long> gettablesIds(){
+	public List<Long> getTablesIds(){
 	     return	tables.stream()
 			.map(Tables::getId)
 			.collect(Collectors.toList());
+	}
+	
+
+	
+	public void calcDate(OffsetDateTime date) {
+		
+		OffsetDateTime dateNow = OffsetDateTime.now();
+		
+		Duration durationBetween = Duration.between(date, dateNow);
+		
+		
+		
 	}
 	
 }

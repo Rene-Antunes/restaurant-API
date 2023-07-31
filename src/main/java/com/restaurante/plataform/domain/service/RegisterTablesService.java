@@ -28,6 +28,12 @@ public class RegisterTablesService {
 		return tablesRepository.saveAll(tables);
 	}
 	
+	@Transactional
+	public void saveAllNewStatus(List<List<Tables>> tables) {
+		
+		 tables.stream().forEach(table -> tablesRepository.saveAll(table));
+	}
+	
 	
 	@Transactional
 	public void delete(Long tablesId) {

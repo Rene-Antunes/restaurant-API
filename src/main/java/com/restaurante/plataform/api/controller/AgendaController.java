@@ -26,6 +26,7 @@ import com.restaurante.plataform.domain.model.Tables;
 import com.restaurante.plataform.domain.repository.AgendaRespository;
 import com.restaurante.plataform.domain.service.RegisterAgendaService;
 import com.restaurante.plataform.domain.service.RegisterTablesService;
+import com.restaurante.plataform.domain.service.ReservationSchedulerService;
 
 @RestController
 @RequestMapping(value = "agendas")
@@ -49,7 +50,6 @@ public class AgendaController {
 	@Autowired
 	private AgendaModelDisassembler agendaModelDisassembler;
 	
-	
 	@GetMapping
 	public List<AgendaModel> list(){
 		List<Agenda> agendas = agendaRespository.findAll();
@@ -67,12 +67,6 @@ public class AgendaController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public AgendamentoModel add(@RequestBody @Valid AgendaInput agendaInput ) {
 		Agenda agenda = agendaModelDisassembler.toDomainObject(agendaInput);
-		List<Long> tablesId = agenda.gettablesIds();
-		List<Tables> tablesStatus = registerTablesService.findOrFailList(tablesId);
-		tablesStatus.forEach(table -> table.reserve());
-		
-		//TODO implementar reserva de mesa programada para o dia marcado
-		
 		registerAgendaService.save(agenda);
 		
 		return agedAgendamentoModelAssembler.toModel(agenda);

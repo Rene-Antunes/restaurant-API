@@ -1,5 +1,8 @@
 package com.restaurante.plataform.domain.model;
 
+import java.time.Duration;
+import java.time.OffsetDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -43,5 +46,26 @@ public class Tables {
 			}
 			
 		this.tableStats = newStats;
+	}
+	
+	
+	public void calcDate(OffsetDateTime date) {
+		
+		Integer dateNow = OffsetDateTime.now().getDayOfYear();
+		
+		Integer durationBetween = dateNow - date.getDayOfYear();
+		
+//		Duration durationBetween = Duration.between(date, dateNow);
+		
+		
+		if ((dateNow + durationBetween) == date.getDayOfYear()) {
+			reserve();
+		}
+		
+//		if (OffsetDateTime.now().plus(durationBetween).equals(date.getDayOfMonth())) {
+//			reserve();
+//		}
+		
+		
 	}
 }

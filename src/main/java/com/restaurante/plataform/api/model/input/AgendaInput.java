@@ -22,8 +22,6 @@ public class AgendaInput {
 	private String phoneNumber;
 	@NotNull
 	private OffsetDateTime date;
-	@NotNull
-	private OffsetDateTime hour;
 	@Valid
 	@NotNull
 	private List<TablesIdInput> tables;

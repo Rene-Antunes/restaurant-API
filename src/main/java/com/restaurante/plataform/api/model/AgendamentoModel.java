@@ -15,5 +15,4 @@ public class AgendamentoModel {
 	private String email;
 	private String phoneNumber;
 	private OffsetDateTime date;
-	private OffsetDateTime hour;
 }
