@@ -25,7 +25,7 @@ Content Table:
    * [About](#sobre)
    * [Features](#features)
    * [How to use](#comoUsar)
-      * [Pre-requirements and technologies](#requisitos)
+      * [prerequisites and technologies](#requisitos)
       * [Running the Api](#rodandoApi)
    * [Tests](#testes)
 
