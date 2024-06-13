@@ -31,7 +31,7 @@ Content Table:
 
 <h2 id="comoUsar">⚙️How to use</h2>
 
-<h2 id="requisitos">✅ Pre-requirements and technologies </h2>
+<h2 id="requisitos">✅ prerequisites and technologies </h2>
 
 - [Java](https://www.java.com/pt-BR/download/manual.jsp)
 - [Spring Boot](https://spring.io/projects/spring-boot)
