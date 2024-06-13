@@ -3,8 +3,21 @@
 > :construction: API Rest feito em Java com Spring restaurant-API em construção :construction:
 
 <h2 id="sobre" >Descrição do Projeto </h2>
-Sistema de gerenciamento de restaurante ou lanchonete. Este sistema é uma API Rest em Java que permite o CRUD de funcionários, Produtos, fotos de produtos, mesas do estabelicimento e tipo de pagamento que pode ser aceito, permite também gerar pedidos e gerenciar seus status ex: criado, pronto, entregue. É possível gerenciar o tipo de permissão de cada funcionário para administrar o sistema. O sistema foi feito com baixo acoplamento sendo possível implementar com facilidade novas features futuramente.
+An API for restaurant management aimed at providing small to large-scale entrepreneurs with better business administration. Built with Java and Spring Boot, this API leverages Spring MVC and adheres to SOLID principles and Clean Code practices.
 
+
+Achievements:
+
+- Successfully implemented employee registration with hierarchical levels
+- Developed a robust table scheduling system
+- Created a seamless order placement process
+- Implemented comprehensive management and registration of payment methods
+- Designed and integrated product management and registration features
+- Enabled customers to place orders directly from the app without needing to call a waiter
+- Ensured reserved tables are marked as unavailable on the specific days they are booked
+
+This project not only showcases my proficiency in Java and the Spring Framework, including Spring Boot and Spring MVC, but also my ability to create practical and efficient solutions for complex business needs.I am currently developing an API for restaurant management aimed at providing small to large-scale entrepreneurs with better business administration. Built with Java and Spring Boot, this API leverages Spring MVC and adheres to SOLID principles and Clean Code practices. Achievements: - Successfully implemented employee registration with hierarchical levels - Developed a robust table scheduling system - Created a seamless order placement process - Implemented comprehensive management and registration of payment methods - Designed and integrated product management and registration features - Enabled customers to place orders directly from the app without needing to call a waiter - Ensured reserved tables are marked as unavailable on the specific days they are booked This project not only showcases my proficiency in Java and the Spring Framework, including Spring Boot and Spring MVC, but also my ability to create practical and efficient solutions for complex business needs.
+Competências: JPA (Java Persistence API) · Spring Boot · Spring MVC · Java · API REST
 
 Tabela de conteúdos
 =================
