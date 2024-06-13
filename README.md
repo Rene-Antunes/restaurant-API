@@ -26,7 +26,7 @@ Content Table:
    * [Features](#features)
    * [How to use](#comoUsar)
       * [Pre-requirements and technologies](#requisitos)
-      * [Runing the Api](#rodandoApi)
+      * [Running the Api](#rodandoApi)
    * [Tests](#testes)
 
 <h2 id="comoUsar">⚙️How to use</h2>
